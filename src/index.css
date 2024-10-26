@@ -10,5 +10,6 @@
 }
 
 body {
-  @apply bg-blackPrimary font-Acme dark:bg-gray-300;
+  @apply bg-blackPrimary dark:bg-gray-300;
+  color: 'Acme';
 }
