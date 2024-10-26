@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+      font-family: 'Acme';
+      src: url('../public/fonts/Acme-Regular.ttf');
+  }
+}
+
+body {
+  @apply bg-blackPrimary font-Acme dark:bg-gray-300;
+}
