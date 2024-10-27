@@ -5,11 +5,10 @@
 @layer base {
   @font-face {
       font-family: 'Acme';
-      src: url('../public/fonts/Acme-Regular.ttf');
+      src: url('./assets/fonts/Acme-Regular.ttf');
   }
 }
 
 body {
   @apply bg-blackPrimary dark:bg-gray-300;
-  color: 'Acme';
 }
