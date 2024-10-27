@@ -4,7 +4,7 @@ import { allProjects } from "../../../assets/images/projects";
 
 const SectionProject = () => {
   useEffect(() => {
-    let animeDivProject = anime({
+    anime({
       targets: ".animDivProject",
       duration: 2000,
       delay: 5000,

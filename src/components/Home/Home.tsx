@@ -1,5 +1,5 @@
 import anime from "animejs";
-import { useEffect } from "react";
+import { MouseEvent, useEffect } from "react";
 import TextAbout from "./TextAbout/TextAbout";
 import Photo from "./Photo/Photo";
 import SectionSkills from "./SectionSkills/SectionSkills";
@@ -8,6 +8,15 @@ import SectionResume from "./SectionResume/SectionResume";
 import SectionContact from "./SectionContact/SectionContact";
 
 export default function Home() {
+  // const scrollPercent = () => {
+  //   const bodyST = document.body.scrollTop;
+  //   const docST = document.documentElement.scrollTop;
+  //   const docSH = document.documentElement.scrollHeight;
+  //   const docCH = document.documentElement.clientHeight;
+
+  //   return ((docST + bodyST) / (docSH - docCH)) * 100;
+  // };
+
   const animateOnScroll = (
     element: Element | null,
     speed = 100,
@@ -19,15 +28,6 @@ export default function Home() {
       return (scrollPercent - offset) / speed;
     }
     return 0;
-  };
-
-  const scrollPercent = () => {
-    const bodyST = document.body.scrollTop;
-    const docST = document.documentElement.scrollTop;
-    const docSH = document.documentElement.scrollHeight;
-    const docCH = document.documentElement.clientHeight;
-
-    return ((docST + bodyST) / (docSH - docCH)) * 100;
   };
 
   const onMouseMove = (
@@ -86,7 +86,7 @@ export default function Home() {
       localStorage.removeItem("theme");
       const dark = document.querySelector("#toggleDark");
       if (dark) {
-        dark.addEventListener("click", (e) => {
+        dark.addEventListener("click", () => {
           if (localStorage.theme === "dark") {
             document.documentElement.classList.remove("dark");
             localStorage.theme = "light";
@@ -156,10 +156,12 @@ export default function Home() {
       width: [1, 500],
       height: [500, 500],
       autoplay: false,
-      delay: function (el, i, l) {
+      delay: function (el, i) {
+        console.log(el);
         return i * 3000;
       },
       endDelay: function (el, i, l) {
+        console.log(el);
         return (l - i) * 0;
       },
       rotate: {
@@ -176,10 +178,12 @@ export default function Home() {
     const animeContentProject = anime({
       targets: ".contentProject",
       autoplay: false,
-      delay: function (el, i, l) {
+      delay: function (el, i) {
+        console.log(el);
         return i * 3000;
       },
       endDelay: function (el, i, l) {
+        console.log(el);
         return (l - i) * 0;
       },
       opacity: 1,
@@ -228,14 +232,14 @@ export default function Home() {
       rotate: [0, 720],
     });
 
-    const scrollPercent = () => {
-      const bodyST = document.body.scrollTop;
-      const docST = document.documentElement.scrollTop;
-      const docSH = document.documentElement.scrollHeight;
-      const docCH = document.documentElement.clientHeight;
+    // const scrollPercent = () => {
+    //   const bodyST = document.body.scrollTop;
+    //   const docST = document.documentElement.scrollTop;
+    //   const docSH = document.documentElement.scrollHeight;
+    //   const docCH = document.documentElement.clientHeight;
 
-      return ((docST + bodyST) / (docSH - docCH)) * 100;
-    };
+    //   return ((docST + bodyST) / (docSH - docCH)) * 100;
+    // };
 
     const divSkills = document.querySelector(".skills");
     const titleSkill = document.querySelector(".titleSkill");
@@ -250,7 +254,7 @@ export default function Home() {
     const divForm = document.querySelector(".animeForm");
     const divIconsContact = document.querySelector(".animeIconsContact");
 
-    window.addEventListener("scroll", (e) => {
+    window.addEventListener("scroll", () => {
       animeSkill.seek(
         animateOnScroll(divSkills, 1200, -400) * animeSkill.duration
       );
@@ -296,10 +300,10 @@ export default function Home() {
   return (
     <div
       onMouseMove={(e) => onMouseMove(document.querySelector(".cursor"), e)}
-      onMouseDown={(e) => onMouseDown(document.querySelector(".cursor"))}
-      onMouseUp={(e) => onMouseUp(document.querySelector(".cursor"))}
-      onMouseEnter={(e) => onMouseEnter(document.querySelector(".cursor"))}
-      onMouseLeave={(e) => onMouseLeave(document.querySelector(".cursor"))}
+      onMouseDown={() => onMouseDown(document.querySelector(".cursor"))}
+      onMouseUp={() => onMouseUp(document.querySelector(".cursor"))}
+      onMouseEnter={() => onMouseEnter(document.querySelector(".cursor"))}
+      onMouseLeave={() => onMouseLeave(document.querySelector(".cursor"))}
     >
       <div className="cursor">
         <div className="cursor__inner"></div>

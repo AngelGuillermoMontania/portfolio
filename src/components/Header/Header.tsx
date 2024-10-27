@@ -3,12 +3,12 @@ import { useEffect } from "react";
 
 function Header() {
   useEffect(() => {
-    // const animeInitHeader = anime({
-    //   targets: "#header",
-    //   duration: 1000,
-    //   delay: 2500,
-    //   translateX: 115,
-    // });
+    anime({
+      targets: "#header",
+      duration: 1000,
+      delay: 2500,
+      translateX: 115,
+    });
 
     const animeHeaderLogo = anime
       .timeline({
@@ -46,23 +46,24 @@ function Header() {
 
     animeInitLogo.play();
 
-    // const animeInfinitLogo = anime({
-    //   targets: ".svgAnimeInfinit path",
-    //   strokeDashoffset: [anime.setDashoffset, 0],
-    //   easing: "easeInOutSine",
-    //   duration: 2500,
-    //   delay: function (el, i) {
-    //     return i * 250;
-    //   },
-    //   loop: true,
-    //   endDelay: 4000,
-    //   direction: "alternate",
-    //   stroke: [
-    //     { value: "#0000FF" },
-    //     { value: "#ffFFFF" },
-    //     { value: "#FF0000" },
-    //   ],
-    // });
+    anime({
+      targets: ".svgAnimeInfinit path",
+      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: "easeInOutSine",
+      duration: 2500,
+      delay: function (el, i) {
+        console.log(el);
+        return i * 250;
+      },
+      loop: true,
+      endDelay: 4000,
+      direction: "alternate",
+      stroke: [
+        { value: "#0000FF" },
+        { value: "#ffFFFF" },
+        { value: "#FF0000" },
+      ],
+    });
   });
 
   const handleDarkMode = () => {
@@ -157,7 +158,7 @@ function Header() {
           CONTACT
         </a>
         <button
-          onClick={(e) => handleDarkMode(e)}
+          onClick={handleDarkMode}
           className="bg-blackPrimary border-double border border-white py-1 px-3 shadow-lg hover:shadow-sm hover:scale-110 transition-all shadow-black rounded-lg dark:bg-white dark:border-black"
         >
           <svg

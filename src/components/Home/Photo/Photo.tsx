@@ -5,7 +5,7 @@ const grid = [10, 10];
 
 const Photo = () => {
   useEffect(() => {
-    const animeInitImage = anime({
+    anime({
       targets: ".staggering-grid-demo",
       duration: 2000,
       delay: 1500,
@@ -44,7 +44,7 @@ const Photo = () => {
       });
     photoAnimation.play();
 
-    const animeIconsInit = anime({
+    anime({
       targets: ".animeIconsInit",
       easing: "easeInOutSine",
       opacity: 1,
